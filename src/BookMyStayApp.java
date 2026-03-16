@@ -1,23 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
 
-class RoomInventory {
-
-    private Map<String, Integer> roomAvailability;
-
-    public RoomInventory() {
-        roomAvailability = new HashMap<>();
-
-        roomAvailability.put("Single", 5);
-        roomAvailability.put("Double", 3);
-        roomAvailability.put("Suite", 2);
-    }
-
-    public Map<String, Integer> getRoomAvailability() {
-        return roomAvailability;
-    }
-}
-
 class Room {
     int beds;
     int size;
@@ -36,6 +19,22 @@ class Room {
     }
 }
 
+class RoomInventory {
+
+    private Map<String, Integer> roomAvailability;
+
+    public RoomInventory() {
+        roomAvailability = new HashMap<>();
+        roomAvailability.put("Single", 3);
+        roomAvailability.put("Double", 2);
+        roomAvailability.put("Suite", 1);
+    }
+
+    public Map<String, Integer> getRoomAvailability() {
+        return roomAvailability;
+    }
+}
+
 class RoomSearchService {
 
     public void searchAvailableRooms(
@@ -49,16 +48,22 @@ class RoomSearchService {
         if (availability.get("Single") > 0) {
             System.out.println("\nSingle Room Available:");
             singleRoom.displayRoomDetails();
+        } else {
+            System.out.println("Single Room Not Available");
         }
 
         if (availability.get("Double") > 0) {
             System.out.println("\nDouble Room Available:");
             doubleRoom.displayRoomDetails();
+        } else {
+            System.out.println("Double Room Not Available");
         }
 
         if (availability.get("Suite") > 0) {
             System.out.println("\nSuite Room Available:");
             suiteRoom.displayRoomDetails();
+        } else {
+            System.out.println("Suite Room Not Available");
         }
     }
 }
@@ -75,12 +80,13 @@ public class BookMyStayApp {
 
         RoomSearchService searchService = new RoomSearchService();
 
-        System.out.println("Available Rooms:");
+        System.out.println("Searching Available Rooms...");
 
         searchService.searchAvailableRooms(
                 inventory,
                 singleRoom,
                 doubleRoom,
-                suiteRoom);
+                suiteRoom
+        );
     }
 }

@@ -1,14 +1,18 @@
-public class BookMyStayApp {
-    public class UseCase1HotelBookingApp {
+public abstract class Room {
 
-        public static void main(String[] args) {
+    protected int numberOfBeds;
+    protected int squareFeet;
+    protected double pricePerNight;
 
-            System.out.println("=====================================");
-            System.out.println("   Welcome to Hotel Booking System   ");
-            System.out.println("=====================================");
+    public Room(int numberOfBeds, int squareFeet, double pricePerNight) {
+        this.numberOfBeds = numberOfBeds;
+        this.squareFeet = squareFeet;
+        this.pricePerNight = pricePerNight;
+    }
 
-            System.out.println("Application started successfully.");
-            System.out.println("System is ready for hotel booking operations.");
-        }
+    public void displayRoomDetails() {
+        System.out.println("Number of Beds: " + numberOfBeds);
+        System.out.println("Room Size (sq ft): " + squareFeet);
+        System.out.println("Price Per Night: $" + pricePerNight);
     }
 }
